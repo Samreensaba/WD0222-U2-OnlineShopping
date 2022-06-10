@@ -20,10 +20,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Back Office</a>
+                    <a class="nav-link" href="./backOffice.html">Back Office</a>
                     </li>
                 </ul>
             </div>
@@ -61,27 +61,28 @@
         <script>
             
             
-           window.onload = async() =>{
-            const addProduct = (event) =>{
+           
+            const addProduct = async(event) =>{
             event.preventDefault();
              let product = {
-                 product_name: document.getElementById('name').value,
-                 product_description: document.getElementById('description').value,
-                 product_brand: document.getElementById('brand').value,
-                 product_image: document.getElementById('image').value,
-                 product_price: document.getElementById('price').value,
-                 product_name: document.getElementById('name').value,
+                name: document.getElementById('name').value,
+                description: document.getElementById('description').value,
+                brand: document.getElementById('brand').value,
+                imageUrl: document.getElementById('image').value,
+                price: parseInt(document.getElementById('price').value),
                 }   
-            console.log(product)  
-            }
+            console.log(product)
             let response = await fetch('https://striveschool-api.herokuapp.com/api/product/', {
                 method: 'POST',
                 body: JSON.stringify(product),
-                headers: new Headers({
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzMzk4MjdmZmQ0OTAwMTU4YTdhOTkiLCJpYXQiOjE2NTQ4NjQyNTgsImV4cCI6MTY1NjA3Mzg1OH0.RttuTQT4ijhKTfkDsydeu2sCam45Aj3cwonsMbFOsmw"
+                headers:({
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzMzk4MjdmZmQ0OTAwMTU4YTdhOTkiLCJpYXQiOjE2NTQ4NjQyNTgsImV4cCI6MTY1NjA3Mzg1OH0.RttuTQT4ijhKTfkDsydeu2sCam45Aj3cwonsMbFOsmw",
+                "Content-Type": "application/json"
                 })
-             })
+             })  
             }
+            
+            
         </script>
         
   </body>
